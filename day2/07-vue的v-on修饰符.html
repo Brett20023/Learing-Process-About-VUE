@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+   
+    
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+    <div id="app">
+        <div @click="divClick">
+            kjnoinoun、
+            <!-- 1.在这里使用v-on的修饰符.stop可以阻止事件冒泡，当我们点击按钮时只会运行子标签锁带的函数
+             而不会向上传递让父标签中的函数同时运行 -->
+            <button @click.stop="btnClick">11111</button>
+
+        </div>
+        <!-- 2. .prevent修饰符的使用(阻止submit进行提交，使用prevent可以阻止默认事件) -->
+        <form action="baidu">
+            <input type="submit" value="提交" @click.prevent="bsubmit">
+        </form>
+
+        <!-- 3.监听某个键盘按键的输入 keyup（监听按键上弹）.enter（只监视enter按键的上弹）-->
+        <input type="text" @keyup.A="keyup">
+
+        <!-- 4. .native用于监听自定义组件(在如下组件中只有使用.native才能进行监听) -->
+        <dfasf @click.native></dfasf>
+
+        <!-- 5. .once修饰符的使用 -->
+        <button @click.once="once">once</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue">import Vue from 'Vue'</script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好',
+                divClick() {
+                    console.log("dfasdf");
+                },
+                btnClick() {
+                    console.log("AAAAA00");
+                },
+                //divClick()被称为事件冒泡，（事件冒泡指父元素在子元素激活时被同时运行了起来，这样的情况被称作事件冒泡）
+
+
+                bsubmit() {
+                    console.log("bsubmit");
+                },
+                keyup() {
+                    console.log('keyup');
+                },
+                once() {
+                    console.log("once");
+                }
+
+            },
+
+            methods: {
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

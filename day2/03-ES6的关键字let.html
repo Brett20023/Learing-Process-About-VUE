@@ -1,0 +1,50 @@
+<!-- let和var的区别 -->
+<!-- ver是JavaScript的设计缺陷，let是var的上位替换，两者都是用来定义变量的，var没有块级作用域 -->
+<!-- 在es5之前if和for没有块级作用域的概念，所以在很多时候，我们都必须借助于function的作用域
+来解决引用外面变量的问题 -->
+<!-- 在es6中加入了let，而let拥有块级作用域 -->
+
+<!-- 1.变量作用于：变量在哪个范围内是可用的 -->
+{
+    var naem = 'why';
+    console.log(name);
+}
+console.log(name)
+name会在两者中都被读取出来
+
+<!-- 2.没有块级作用域的问题：if的块级 -->
+var func;
+if(true){
+    var name = "why";
+    fnc = function(){
+        console.log(name);
+    }
+      
+}
+name = "asdf"
+func()
+if判断后的name的结果可以在全局进行更改，有可能引起恒大的风险
+
+<!-- 3.没有块级作用域的问题：for的块级 -->
+var btns = document.getElementsByTagName('button');
+for (var i=0; i<btns.length; i++){
+    btns[i].addEventListner('click', function(){
+        console.log('第'+i+'个按钮被点击')；
+    })
+}
+当使用者点击第一个按钮时输出i的值会是5，i没有办法返回到初始状态，一旦被改变for循环的目的就会失效
+使用闭包可以解决这个问题，原理是函数拥有固定的作用域
+
+闭包的示例：
+
+for (var i=0; i<btns.length; i++){
+    (fucntion(dsagfsdaf){
+    btns[i].addEventListner('click', function(){
+        console.log('第'+dsagfsdaf+'个按钮被点击')；
+    })
+})(i)
+}
+
+如果将以上示例中的var换成let就不会出现使用var所带来的麻烦
+
+
