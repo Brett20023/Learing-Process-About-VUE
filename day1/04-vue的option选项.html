@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue">import Vue from 'Vue'</script>
+</head>
+<!--MVVM:详见百度百科-->
+<body>
+    <div id="app">
+        <h1></h1>
+        <button >+</button>
+        <button >-</button>
+
+<br>
+        <button v-on:click="add">+</button>
+<button v-on:click="sub">-</button>
+
+
+    </div>
+
+    <script>
+  
+    </script>
+    </body>
+    </html>
+    /*el: 类型string|HTMLElement
+          决定之后Vue实例会管理哪一个DOM
+      data：Object|Function(组件当中data必须是一个函数)
+           Vue实例对应的数据对象
+      methods：{[key:string]:Function}
+            定义属于Vue的一些方法，可以在其他地方调用，也可以在指令中使用
+          */
+/* 开发中方法与函数的区别
+   方法：method
+   函数：function
+
+*/

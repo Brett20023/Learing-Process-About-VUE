@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+   
+    
+    -->
+
+<head>
+    <meta charset="UTF-8">
+  
+</head>
+
+
+<body>
+    <div id="app">
+        <h2 :style="[basestyle, basestyle1]">{{message}}</h2>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好',
+                basestyle: { backgroundColor: 'red' },
+                basestyle1: { fontSize: '153px' }
+
+
+
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

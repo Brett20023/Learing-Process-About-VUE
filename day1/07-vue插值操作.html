@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+    Mustache语法（即双大括号）
+    Mustache胡须的意思
+    在mustache语法中不经可以直接写变量，也可以写简单地表达式
+    
+    -->
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue">import Vue from 'Vue'</script>
+</head>
+
+
+<body>
+    <div id="app">
+        <h2>{{message}}</h2>
+        <h2>{{firstname+lastName}}</h2>   <!-- 表达式-->
+        <h2>{{firstname+' '+lastName}}</h2>  <!-- 加空格-->
+         <h2>{{getFullWord()}}</h2>//通过算法相加
+        <h2>{{FullWord}}</h2>//通过计算属性相加相加
+        <h2>{{firstname}} {{lastName}}</h2>
+
+
+    </div>
+
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好',
+                firstname:'你',
+                lastName:'好'
+            },
+            methods:{
+                getFullWord(){
+                  return this.firstname+" "+this.lastName
+                }
+                },
+                // compute:计算属性
+            computed:{
+                FullWord:function(){
+                    return this.firstname+" "+this.lastName
+                }
+            }
+            
+
+        })
+
+    </script>
+</body>
+
+</html>
+
+/* 
+
+*/

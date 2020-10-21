@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+      <div id = "app">
+          <ol>
+              <li v-for="item in movies">{{item}}</li>
+              <!-- <li v-for="变量 in 列表">{{变量}}</li> -->
+          </ol>
+
+      </div>
+          
+          <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好啊',
+                movies:[ 'AAAA','海王','aaa']
+                //列表名:[ 'AAAA','海王','aaa']
+            }
+        })
+       
+</script>
+    </body>
+</html>
+//v-for会遍历出数组中的每一个元素，并且当对数组元素进行更改后我们仍能得到一个动态的遍历列表，变更会实时反馈到列表中去
