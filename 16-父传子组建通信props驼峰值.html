@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+   
+    
+    -->
+<head>
+    <meta charset="UTF-8">
+   
+</head>
+
+
+<body>
+     <div id="app">
+        <cpn :cinfo="info"></cpn>
+
+
+
+    </div>
+    <template id="AAA">
+        <h2>{{cinfo}}</h2>
+
+
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const cpn = {
+            template:'#AAA',
+            props:{
+
+                //目前版本的vue不支持驼峰命名法（如要使用在外部调用的地方的驼峰处使用小写加-  例：cInfor 调用时 c-infor）
+                cinfo:{
+                    type:Object,
+                    default(){
+                        return{}
+                    }
+                }
+
+            }
+
+        }
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好',
+                info:{
+                    name:'why',
+                    age:18,
+                    height:1.88
+                }
+
+
+            },
+            components:{
+                cpn
+            }
+        })
+
+    </script>
+</body>
+
+</html>

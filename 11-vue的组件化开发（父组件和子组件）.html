@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+   
+    
+    -->
+<head>
+    <meta charset="UTF-8">
+   
+</head>
+
+
+<body>
+     <div id="app">
+        <cpn2></cpn2>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+// 1.创建第一个组件
+// const AAA = Vue.extend({
+//     template:`
+//     <h1>546546464</h2>
+        
+
+//     `,
+    
+// })
+
+
+
+
+
+
+const AAA = Vue.extend({
+    template:`
+    <div>
+    <h1>2</h1>
+    <h1>111</h1>
+    <h1>333333</h1>
+    <h1>444444444</h1>
+</div>`,
+})
+
+// 2.创建第二个组件  
+
+//在组件中使用别的组件此组件就是最高级组件即root组件
+const BBB = Vue.extend({
+    template:`
+    <div>
+    <h2>AAA</h2>
+    <h2>BBB</h2>
+    <h2>BBB</h2>
+    <h2>WWWWW</h2>
+    <cpn1></cpn1>
+
+</div>
+    `,
+
+
+//     // 可以像这样，在组件中插入组件，从而构建出父子组件
+//     // 可以在组件中使用组件
+components:{
+        cpn1:AAA
+    }
+
+})
+
+
+
+
+
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好',
+
+
+            },
+            components:{
+                cpn2:BBB
+            }
+        })
+
+    </script>
+</body>
+
+</html>
