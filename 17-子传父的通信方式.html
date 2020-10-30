@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+    <!-- 1.父组件模板 -->
+    <div id="app">
+        <!-- v-on:可以监听子组件发送出的数据 -->
+
+        <!-- 这不是浏览器产生的事件，因此系统会默认吧item事件传回父组件 -->
+        <cpn @itemclick="cpnclick"> </cpn>
+
+    </div>
+
+
+    <!-- 2.子组件模板 -->
+    <template id="ABC">
+        <div>
+            <button v-for="item in categories" @click="btnclick(item)">{{item.name}}</button>
+        </div>
+    </template>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        // 子组件
+        const cpn = {
+            template: "#ABC",
+
+            data() {
+                return {
+                    categories: [
+                        { id: 'aaa', name: '热门推荐' },
+                        { id: 'bbb', name: '手机数码' },
+                        { id: 'ccc', name: '家用家电' },
+                        { id: 'ddd', name: '电脑办公' },
+
+                    ]
+                }
+            },
+            methods: {
+                btnclick(item) {
+                    //发射事件（自定义事件）
+                    this.$emit('itemclick', item)
+                }
+            }
+
+        }
+        // 父组件
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好',
+                movies: ['海王', '海贼王', '海玉米', '马玉米']
+
+
+            },
+            methods: {
+                cpnclick() { console.log("cpnclick"); }
+            },
+
+            components: {
+                cpn
+
+            }
+
+
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+   组件内部无法访问vue实例的数据
+   
+   可以在组件中创建一个data（）【也可以有methods（）等属性】来储存数据
+   只是data的属性必须是一个函数，而且这个函数返回一个对象，对象内部保存着数据
+    
+    -->
+<head>
+    <meta charset="UTF-8">
+   
+</head>
+
+
+<body>
+     <div id="app">
+        <cpn></cpn>
+
+
+
+    </div>
+    <template id="cpn">
+<a href="">{{title}}</a>
+
+
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+Vue.component('cpn', {
+    template:'#cpn',
+    data(){
+        return{
+            title:'abe'
+        }
+    }
+})
+
+
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好',
+
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

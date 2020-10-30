@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+   
+    
+    -->
+<head>
+    <meta charset="UTF-8">
+   
+</head>
+
+
+<body>
+     <div id="app">
+<cpn></cpn>
+
+        <!-- 可以将template的内容写到body中来
+        1.使用<script>的标签text/x-template来连接到component中并用id来限制，是未哪个component来提供支持 -->
+            <!-- <script type="text/x-template" id="myCpn">
+            <div>
+                <h1>你是标题</h1>
+                <h2>你是内容</h2>
+            </div>
+            </script> -->
+
+
+
+
+
+    </div>
+    
+            <!-- 2.也可以使用template标签, 和上面的写法有同样的效果，同样也要用id进行绑定-->
+            <template id = "myCpn">
+                <div>
+                    <h1>你是标题</h1>
+                    <h2>你是内容</h2>
+                
+                </div>
+            </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        // 1.注册一个全局组件
+        Vue.component('cpn',{
+            template:`#myCpn`})
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好',
+
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

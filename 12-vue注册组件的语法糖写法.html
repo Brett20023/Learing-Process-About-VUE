@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+   父子组件的错误用法：以子标签的形式在Vue实例中使用
+   .当子组件注册到父组件的component是，Vue会编译好父组件的模块
+   .该模板的内容已经决定了父组件将要渲染的HTML（相当于父组件中已经有了子组件中的内容了）
+   .<child-cpn></child-cpn>是只能在父组件中被识别的
+   .类似这种用法，<child-cpn></child-cpn>是会被浏览器忽略的
+
+    
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+    <div id="app">
+        <AA></AA>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        // 1.全局组件注册的语法糖写法
+    //     Vue.component('aa', {
+    //         template: `
+    //         <div>
+    // <h2>hhhh</h2>
+    // <h3>男男女女你</h3>
+    // </div>`,
+    //     })
+
+
+
+
+
+        // 1.创建组件构造器
+    //     const AA = Vue.extend({
+    //         template: `
+    // <div>
+    // <h1>2</h1>
+    // <h1>111</h1>
+    // <h1>333333</h1>
+    // <h1>444444444</h1>
+    // </div>`,
+
+    //     })
+        // 2.注册组件
+        // Vue.component('AA', alpex)
+
+// 3.局部组件的语法糖与全局组件相似都可以直接写在template里面
+
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好',
+
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>
