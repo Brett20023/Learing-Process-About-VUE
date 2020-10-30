@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+   
+    
+    -->
+<head>
+    <meta charset="UTF-8">
+   
+</head>
+
+
+<body>
+     <div id="app">
+         <!-- 在遍历中没有使用索引值（下标值） -->
+         <ul>
+             <li v-for="BBBBB in AAAA">{{BBBBB}}</li>
+
+         </ul>
+        <h2>{{message}}</h2>
+        <!-- 在遍历的过程中获得下标值 -->
+        <ul>
+            <li v-for="(BBBBB,index) in AAAA">{{index+1}} . {{BBBBB}}</li>
+
+        </ul>
+<!-- 
+        遍历对象
+        在遍历对象的过程中如果只获取到一个值，那么获取的对象是value -->
+        <ul>
+            <li v-for="CCCCC in infor"> {{CCCCC}}</li>
+
+        </ul>
+        <!-- 获取key和value -->
+        <ul>
+            <li v-for="(value, key) in infor"> {{value}}---{{key}}</li>
+
+        </ul>
+<!-- 
+        获取value，key和index -->
+        <ul>
+            <li v-for="(value, key,index) in infor"> {{value}}---{{key}}---{{index}}</li>
+
+        </ul>
+
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue">import Vue from 'Vue'</script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好',
+                AAAA:['123','123','456','456'],
+                infor:{
+                    name:"brett",
+                    age:5000,
+                    height:51,
+
+                }
+
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

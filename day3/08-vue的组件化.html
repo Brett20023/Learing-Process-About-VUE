@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+   讲一个大的页面拆分成很多个不同的小组件，在每个小组件中实现相应的功能，
+   有利于对系统的维护和修改
+    
+
+   组件的使用分为三个部分：创造组件构造器
+                         注册组件
+                         使用组件
+
+1.调用Vue.extend()方法创建组件构造器（在java中extend表示继承）
+2.调用Vue.component()方法注册组件 （component代表组件
+3.在Vue实例的作用范围内使用组件
+
+
+
+
+    -->
+<head>
+    <meta charset="UTF-8">
+   
+</head>
+
+
+<body>
+     <div id="app">
+        <h2>{{message}}</h2>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好',
+
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

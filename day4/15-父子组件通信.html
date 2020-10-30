@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+   组件之间的通信
+
+
+   如果要开发一个正常的网页列表
+   step1：向服务器发送请求，请求列表数据（一般会在最外层最大的组件中进行请求的发送）
+          将最外层组件请求到的productlist[]传给其子组件
+
+   step2： 子组件不能引用父组件或者Vue实例的数据
+        但在开发中往往需要将一些数据从上层传递到下层
+        props->properties（属性）
+
+    
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+    <div id="app">
+     
+<cpn :cmoves='movies' :cmessage='message'> </cpn>
+
+    </div>
+
+
+
+        <template id="ABC">
+<!-- 父传子通过props -->
+<div>
+    <p>{{cmoves}}</p>
+    <p>{{cmessage}}</p>
+</div>
+        </template>
+
+        <!-- 父组件向子组件传递信息 -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const cpn = {
+            template: "#ABC",
+            // props:['cmoves', 'cmessage']
+            props:{
+                // cmoves:Array,//指定传过来数据的类型
+                // cmessage:String,
+
+                //可以为传输过来的数据提供一些默认值
+                cmoves:{
+                    type:String,
+                    default:'aaaa',
+                    required:true//限制系统必须传值如果不传就会报错
+                },
+
+                //类型是对象或者数组时，默认值必须是一个函数
+                cmessage:{
+                    type:String,
+                    default:'aaaa',
+                    required:true
+                }
+            }
+
+        }
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好',
+                movies: ['海王', '海贼王', '海玉米', '马玉米']
+
+
+            },
+
+            components:{
+                cpn
+                
+                } 
+               
+            
+        })
+
+    </script>
+</body>
+
+</html>

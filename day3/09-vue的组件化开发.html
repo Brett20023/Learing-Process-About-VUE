@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+   
+    需求：有一团html代码将在一个页面中多次使用
+    -->
+<head>
+    <meta charset="UTF-8">
+   
+</head>
+
+
+<body>
+    <!-- cpn是component的缩写 -->
+    <cpn>
+<h1>456464</h1>
+<h2>789798461</h2>
+<h3>857548498494</h3>
+
+    </cpn>
+    如果要重复使用组建的话直接打cpn就可以了
+     <div id="app">
+      <my-cpn></my-cpn>
+      <my-cpn></my-cpn>
+        <cpn></cpn>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+//ES6语法
+//可以使用~键打出``来进行换行引用
+// 在ES5中使用""来进行换行引用时要""+""
+// 而``可以直接换行引用无需进行拆分
+
+
+
+//1.创建组件构造器对象
+const cpnContructor =  Vue.extend({
+    template:`
+    <div>
+    <h2>我是标题</h2>
+    <h1>我是内容</h1>
+    </div>
+    `
+})
+
+
+
+
+//2.注册组件
+// Vue.component("组建的标签名"){}
+Vue.component("my-cpn",cpnContructor)
+
+
+
+
+
+//3.使用组件
+
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好',
+
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

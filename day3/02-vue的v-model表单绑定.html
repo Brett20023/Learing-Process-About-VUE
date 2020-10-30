@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+   
+    
+    -->
+<head>
+    <meta charset="UTF-8">
+   
+</head>
+
+
+<body>
+     <div id="app">
+         <!-- <input type="text" v-model="message"> -->
+         <input type="text" :value="message" @input="valuechange">
+         <input type="text" :value="message" @input="message = $event.target.value">
+<!-- 
+         通过上方这两种指令也可以实现message的双向绑定 -->
+      <h2>{{message}}</h2>
+
+
+      <!-- textarea也可以实现双向绑定 -->
+<!-- <textarea v-model="message"></textarea>
+<p>输入的内容是：{{message}}</p> -->
+
+
+    </div>
+    <!-- 实现了双向绑定不论是修改输入框中的数据还是使用控制台改变message的数据，其变化一定会同时反映在界面上 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好',
+
+
+            },
+            methods:{
+                  valuechange(event){
+                      this.message = event.target.value;
+                  }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

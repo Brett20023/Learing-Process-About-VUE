@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+   
+    
+    -->
+<head>
+    <meta charset="UTF-8">
+   
+</head>
+
+
+<body>
+     <div id="app">
+         <!-- v-for使用过程添加key（插入key可以提高浏览器的渲染效率，如果不插入key就使用splice，浏览器会将插入元素的key值替换为当前元素，
+            然后再对其他元素进行重新赋值依次排序） -->
+        <h2>{{message}}</h2>
+
+        <!-- splice(XX,AA,BB)，其中XX表示循环中的第几个元素，AA表示删掉该元素后的几个元素，BB表示在该元素后插入的元素 -->
+<ul>
+    <!-- key值进行绑定时要保证其唯一性，不能使用index -->
+    <li v-for="item in letters" :key="item">{{item}}</li>
+</ul>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue">import Vue from 'Vue'</script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好',
+                letters:['aaa','bbbb','cccc']
+
+
+            },
+
+            
+            
+        })
+
+    </script>
+</body>
+
+</html>

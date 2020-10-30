@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--小结
+        一 计算属性
+
+   1.1计算属性的本质
+   ###fullname：{set（），get（）}
+1.2计算属性和methods的对比
+计算属性在多次使用时，只会调用一次
+它是有缓存的
+
+
+二 事件监听
+
+###2.1事件监听的基本使用
+
+2.2参数问题
+btnClick   事件不传参数时小括号可省略
+btnClick（event）   在方法出依然会有一个小括号会将event作为参数传出
+btnClick（abc，event）当需要同时得到参数和事件时要使用$event来传递
+
+2.3修饰符
+stop
+prevent
+.enter
+.once
+.native
+
+三 条件判断
+
+3.1 v-if/v-else/v-else-if
+
+3.2 登录小案例
+
+3.3 v-show
+
+四 循环遍历
+
+4.1遍历数组
+
+4.2遍历对象
+value
+value,key
+value,key,index
+
+4.3数组哪些方法是响应式的
+
+4.4作业完成
+
+五.书籍案例
+
+六 v-model的基本使用
+
+6.1 v-model的基本使用
+v-model => v-vind:value v-on:input
+
+6.2 v-model和radio/checkbox/select
+
+6.3修饰符
+lazy
+number
+trim
+
+七 组件化开发
+
+7.1认识组件化
+
+7.2组件的基本使用
+
+7.3全局组件和局部组件、
+
+7.4父组件和子组件
+
+7.5注册的语法糖
+
+7.6模板的分离写法
+script
+template
+
+7.7数据的存放
+子组件不能直接访问父组件
+子组件中是不是有自己的data，而且必须是一个函数
+为什么必须是一个函数
+
+7.8/父子组件的通信
+
+父传子：props
+子传父：$emit
+
+7.9项目
+npm install
+npm runserve
+
+
+
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+    <div id="app">
+        <h2>{{message}}</h2>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好',
+
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>
