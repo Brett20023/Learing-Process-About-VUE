@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+   
+    
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+    <div id="app">
+        <h2 v-if="isShow">
+            <div>sdafsadf</div>
+            <div>sdafsadf</div>
+            <div>sdafsadf</div>
+            <div>sdafsadf</div>
+            <div>sdafsadf</div>
+            <div>sdafsadf</div>
+            <div>sdafsadf</div>
+
+
+
+        </h2>
+        <h1 v-else>当if为false时显示我</h1>
+
+        <!-- v-if和v-else-if使用时需要条件而v-else不需要条件，且当三者并用是v-else只能用在末尾进行判断 -->
+        <a v-if="score>=90">NB</a>
+        <a v-else-if="score>=80">一般</a>
+        <a v-else>差点东西</a>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue">import Vue from 'Vue'</script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                isShow: false,
+                score: 66
+
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

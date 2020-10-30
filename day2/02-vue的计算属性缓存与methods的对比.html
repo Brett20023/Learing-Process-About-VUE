@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+   
+    
+    -->
+<head>
+    <meta charset="UTF-8">
+   
+</head>
+
+
+<body>
+     <div id="app">
+         <!--1. 直接拼接,不要采用语法过于繁琐-->
+         <h2>{{message1}} {{message2}}</h2>
+         <!-- 2.调用函数通过methods来书写，每次使用需要再进行调用-->
+        <h2>{{getComplateInfor()}}</h2>
+        <!-- 3.通过computed属性来书写，使用多次调用一次-->
+        <h2>{{ComplateInfor}}</h2>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue">import Vue from 'Vue'</script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message1: '你好',
+                message2: '世界'
+
+
+            },
+            methods:{
+                getComplateInfor:function(){
+                    return this.message1+" "+this.message2
+                }
+            },
+            computed:{
+                ComplateInfor:function(){
+                    return this.message1+" "+this.message2
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

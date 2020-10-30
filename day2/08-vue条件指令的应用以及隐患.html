@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+   
+    
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+    <div id="app">
+        <span v-if="isUser">
+            <label for="username">用户名</label>
+            <input type="text" id="username" placeholder="用户账号">
+        </span>
+        <span v-else>
+            <label for="email">用户邮箱</label>
+            <input type="text" id="email" placeholder="用户邮箱">
+
+        </span>
+        <button @click="isUser = !isUser">切换类型</button>
+
+        <!-- 使用以上方法进行切换过后，输入框中的值不会的到重置，在某些情况下不便于用户操作 
+        为了阻止vue对用户输入内容进行复用，可以在input中插入不同的key，当vue进行读取时就会判断两者有不同的属性不能进行复用，从而清空用户输入的信息并显示默认值-->
+        <span v-if="isUser">
+            <label for="username">用户名</label>
+            <input type="text" id="username" placeholder="用户账号"key="bbb">
+        </span>
+        <span v-else>
+            <label for="email">用户邮箱</label>
+            <input type="text" id="email" placeholder="用户邮箱" key="AAA">
+
+        </span>
+        <button @click="isUser = !isUser">切换类型</button>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue">import Vue from 'Vue'</script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好',
+                isUser: true
+
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

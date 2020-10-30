@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+   
+    
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+    <div id="app">
+        <h2>{{complateInfor}}</h2>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue">import Vue from 'Vue'</script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message1: '你好',
+                message2: '世界'
+
+
+            },
+            computed: {
+                complateInfor: {
+                    //一般情况下不使用set方法在计算属性中，set属于只读属性
+                    set: function (newvalue) {
+                        // console.log('------',newvalue);(用于验证set功能是否运行，并且同通过set中的newvalue来得到进行变动的数据)
+                        const names = newvalue.split(' ');//通过空格为分界降带入的newvalue变成新的数组
+                        this.message1 = names[0];
+                        this.message2 = names[1];
+
+                    },
+                    get: function () {
+                        return this.message1 + " " + this.message2
+
+                    }
+                }
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>
