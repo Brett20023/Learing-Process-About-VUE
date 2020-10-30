@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+
+
+
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+
+    <div id="app">
+<!-- 直接写一个span对三个对三个插槽进行替换会将三个一起替换掉 -->
+<!-- 在用来替换的元素中用slot来对应想要替换的slot插槽的name从而做到一一对应的替换 -->
+
+        <cpn><span slot="center">标题</span></cpn>
+        <cpn><button slot="left">标题</button></cpn>
+        <cpn><span>标题</span></cpn>
+
+
+     
+
+
+
+
+
+    </div>
+
+
+    <!-- 2.子组件模板 -->
+    <template id="cpn">
+    <div>
+        <!-- 在slot中插入name属性可以让slot元素的替换得到指定
+        只有在 -->
+        <slot name="left"><span>左边</span></slot>     
+        <slot name="center"><span >中间</span></slot>
+        <slot name="right"><span >右边</span></slot>
+<slot></slot>
+<slot></slot>
+
+<slot></slot>
+
+    </div>
+    </template>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: "你好啊"
+            },
+
+
+
+
+
+            components: {
+                cpn: {
+                    template: '#cpn',
+                   
+                    },
+
+
+                }
+            
+
+        })
+
+
+    </script>
+</body>
+
+</html>

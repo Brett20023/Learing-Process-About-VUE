@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+为什么使用slot：
+1.提高组件的可拓展性
+2.使用者可以决定组件内部展示都内容
+
+
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+
+    <div id="app">
+<!-- cpn标签之间的内容将会替换掉模板中<slot>标签的位置进行显示 -->
+        <cpn><button>按钮</button></cpn>
+        <cpn></cpn>
+        <cpn></cpn>
+
+
+
+
+
+    </div>
+
+
+    <!-- 2.子组件模板 -->
+    <template id="cpn">
+    <div>
+<h2>我是组件<h2>
+<p>俺也是组件</p>
+
+<!-- 可以在slot中间插入，如button一样的标签为slot设置默认值  -->
+<slot><a>11111</a>></slot>
+    </div>
+    </template>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: "你好啊"
+            },
+
+
+
+
+
+            components: {
+                cpn: {
+                    template: '#cpn',
+                   
+                    },
+
+
+                }
+            
+
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+模块化开发
+
+一·JavaScript的原始功能
+   通过这门语言增加网页的交互
+ 1.  后来出现了ajax（异步请求）让js的互动请求变多，从而产生了前后端分离
+   为了因对代码量剧增，开发中往往会调用多个js文件，但这种维护方式往往也会带来灾难性的后果
+   比如全局变量同名的问题，如果多个开发人员在他的js文件中定义的一个名为X的全局变量并调用进
+   行判断，那么就会出现系统无法找出正确应该引用的那个全局变量
+
+   解决方案：1.匿名函数（在js中将函数进行闭包，以免函数之间的全局变量调用互相影响）但是在不同的js文件中没用办法调用，
+            这种方法减少了代码的复用性
+
+            2.使用对象作为模块化的出口，将js文件封装为一个模块，这样在程序的调用过程中就可以将js文件名作为一个整体
+            进行调用不用担心不同人编码使用相同变量名的问题了
+
+
+   2.常见的模块化规范：CommonJS,AMD、CMD,也有ES6的Modules
+   
+   模块化有两个关键的核心：导入和导出
+   CommonJS的导出：
+
+   modole.exports={
+       flag:true.
+       test(a,b){
+           return a+b
+       },
+       demo(a,b){
+           return a*b
+       }
+   }
+
+   CommonJS的导入
+
+   ComminJS模块
+   let (test,demo,flag)=require('moduleA');
+   let _mA = require('moduleA');
+   let test = _mA.test;
+   let demo=_mA.demo;
+   let flag=_mA.flag;
+
+
+
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+
+    <div id="app">
+        <!-- 用-来对数组进行间隔 -->
+        <cpn >
+            <!-- 目的是获取子组件中的planguage 
+            vue2.5.几以下必须使用template模板
+            -->
+            <template slot-scope='slot'>
+<span v-for="item in slot.data">
+{{item}}-
+</span>
+
+            </template>
+        </cpn>
+
+
+        <!-- 消除最后间隔的- -->
+        <cpn >
+    
+        <template slot-scope='slot'>
+<span >
+{{slot.data.join(' - ')}}
+</span>
+
+        </template>
+        </cpn>
+
+
+
+
+
+        <cpn ></cpn>
+
+
+</div>
+
+
+    <!-- 2.子组件模板 -->
+    <template id="cpn">
+    <div>
+
+        <!-- 此处data的名称可以随意更改（可以叫data也可以叫任意名称，要注意的是data的名称更改后再父组件中调用时的名称也要进行相应的更改） -->
+        <slot :data="planguage">
+        <ul>
+        <li v-for="item in planguage">{{item}}</li>
+    </ul>
+
+    </slot>
+    </div>
+    </template>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: "你好啊",
+                isShow:true,
+            },
+
+
+
+
+
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data(){
+                        return{
+                            planguage:['dddd','123','dfsa444ds7']
+                        }
+                    },
+                    created(){
+this.planguage.join(' - ')
+                    }
+                   
+                    },
+
+
+                }
+            
+
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+不建议在开发中使用$parent，因为会造成严重的程序耦合
+
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+
+    <div id="app">
+
+        <cpn>
+
+
+        </cpn>
+
+
+
+
+    </div>
+
+
+    <!-- 2.子组件模板 -->
+    <template id="cpn">
+        <ccpn></ccpn>
+    </template>
+
+
+    <template id="ccpn">
+        <div>
+
+            <h2>我是子组件</h2>
+            <button @click="btnClick">点击</button>
+
+        </div>
+    </template>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: "你好啊"
+            },
+
+
+
+
+
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data() {
+                        return {
+                            name: "我是cpn组件的name"
+                        }
+                    },
+
+
+                    components: {
+                        ccpn: {
+                            template: "#ccpn",
+                            methods: {
+                                btnClick() {
+                                    //1.访问父组件$parent
+                                    console.log(this.$parent);
+                                    console.log(this.$parent.name);
+
+                                    // 2.访问根组件
+                                    console.log(this.$root);
+
+
+                                }
+                            },
+                        },
+
+                    }
+
+                }
+            }
+
+        })
+
+
+    </script>
+</body>
+
+</html>

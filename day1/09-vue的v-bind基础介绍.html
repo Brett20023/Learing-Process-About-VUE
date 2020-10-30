@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+   
+    
+    -->
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue">import Vue from 'Vue'</script>
+</head>
+
+
+<body>
+     <div id="app" v-cloak>
+        <!-- v-bind指令来动态绑定到模板的属性中去-->
+        <!-- 错误示范，这里不可以使用mustache语法-->
+        <!-- <img src="{{imgURL}}" alt="">{{message}}</img> -->
+        <img v-bind:src="imgURL" alt="">{{message}}</img>
+        <a v-bind:href='aHERF' >vue一下</a>  
+        <!-- v-bind语法糖，也就是简写方式-->
+        <!-- v-bind语法糖写法：-->
+        <a :href='aHERF' >vue一下</a>  
+    </div>
+
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好',
+                imgURL:'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+                aHERF:'https://cn.vuejs.org/v2/guide/syntax.html#Attribute'
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+   
+    
+    -->
+<head>
+    <style>
+        .active{
+            color:red;
+        }
+    </style>
+    <meta charset="UTF-8">
+    
+</head>
+
+
+<body>
+     <div id="app">
+        <!-- v-bind绑定class指令-->
+        <!-- <h2 v-bind:class="{类名1：boolean, 类名2：boolean}">{{message}}</h2>-->
+        <!-- 通过boolean值来控制元素的显示或消失，来实现类似鼠标点击是显示背景颜色的效果-->
+        <h2 v-bind:class="{active: isActive, line: isLine}">{{message}}</h2>
+        <!-- 依然可以在v-bind:class前面再加普通的class-->
+        <button v-on:click="btnClick">按钮</button>
+        <h3 :class="['active', 'line']">{{message}}</h3>
+        <!-- 当类特别多时可以使用数组语法来写class的类元素-->
+        <!-- 使用数组引用时加上单引号会被识别为字符串，不加单引号会将其识别为变量-->
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue">import Vue from 'Vue'</script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好',
+                 isActive:true,
+                 isLine:true,
+
+
+
+            },
+            methods:{
+               btnClick(){
+                   this.isActive = !this.isActive
+               }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

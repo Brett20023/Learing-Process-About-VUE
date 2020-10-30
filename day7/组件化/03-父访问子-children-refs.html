@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    父子组件的访问方式：$children
+    
+    有事需要父组件直接访问子组件或者子组件直接访问根组件
+
+    父组件访问子组件：$children或者$refs----reference
+    子组件访问父组件：使用$parent
+
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+
+    <div id="app">
+
+        <cpn></cpn>
+        <cpn></cpn>
+
+        <cpn ref="aaa"></cpn>
+
+        <button @click="btnClick">点我点我</button>
+
+
+
+    </div>
+
+
+    <!-- 2.子组件模板 -->
+    <template id="cpn">
+        <div>
+            我是子组件
+
+
+        </div>
+    </template>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: "你好啊"
+            },
+            methods: {
+                btnClick() {
+
+
+                    // 1.$childer一般不使用，因为其涉及到下标值的改变容易形成数据臃肿
+                    //     console.log(this.$children);
+                    //     this.$children[0].showMessage();
+                    // for (let c of this.$children){
+                    //     console.log(c.name);
+                    //     c.showMessage();
+
+                    // 2.$refs
+                    // 默认refs为空对象必须在组件中加入ref=“某个东西”
+                    // refs是一个对象类型
+
+                    console.log(this.$refs.aaa.name);
+
+
+
+
+                }
+
+            
+        },
+
+
+
+
+
+            components: {
+            cpn: {
+                template: '#cpn',
+
+                data() {
+                    return {
+                        name: "我是name"
+                    }
+                },
+                methods: {
+                    showMessage() {
+                        console.log("showMessage");
+
+                    }
+                }
+
+            }
+        }
+
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+
+父组件替换插槽的标签，但是内容由子组件来提供
+
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+
+    <div id="app">
+        <!-- 用-来对数组进行间隔 -->
+        <cpn >
+            <!-- 目的是获取子组件中的planguage 
+            vue2.5.几以下必须使用template模板
+            -->
+            <template slot-scope='slot'>
+<span v-for="item in slot.data">
+{{item}}-
+</span>
+
+            </template>
+        </cpn>
+
+
+        <!-- 消除最后间隔的- -->
+        <cpn >
+    
+        <template slot-scope='slot'>
+<span >
+{{slot.data.join(' - ')}}
+</span>
+
+        </template>
+        </cpn>
+
+
+
+
+
+        <cpn ></cpn>
+
+
+</div>
+
+
+    <!-- 2.子组件模板 -->
+    <template id="cpn">
+    <div>
+
+        <!-- 此处data的名称可以随意更改（可以叫data也可以叫任意名称，要注意的是data的名称更改后再父组件中调用时的名称也要进行相应的更改） -->
+        <slot :data="planguage">
+        <ul>
+        <li v-for="item in planguage">{{item}}</li>
+    </ul>
+
+    </slot>
+    </div>
+    </template>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: "你好啊",
+                isShow:true,
+            },
+
+
+
+
+
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data(){
+                        return{
+                            planguage:['dddd','123','dfsa444ds7']
+                        }
+                    },
+                    created(){
+this.planguage.join(' - ')
+                    }
+                   
+                    },
+
+
+                }
+            
+
+        })
+
+
+    </script>
+</body>
+
+</html>

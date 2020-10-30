@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+   
+    
+    -->
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue">import Vue from 'Vue'</script>
+</head>
+
+
+<body>
+     <div id="app" v-cloak><!--在某此标签中的其他元素代码尚未生效前将其隐藏-->
+        <h2>{{message}}</h2>
+        <h2 v-once>{{message}}</h2><!--  v-once只在第一次调用时显示数据，之后对数据的更改不会反应在含有v-once的元素中-->
+        <h2 v-html='url'></h2><!--  v-html会自动解释字符串中含有的html元素将其通过html转码显示在页面上-->
+        <h2 v-text='message'></h2><!--  v-text可以让使用者直接在v-text标签中带入data中的值并且显示出来，
+                                       但一般不使用因为可用性不高，其会将<h2></h2>标签之间的内容覆盖掉-->
+        <h2 v-pre>{{message}}</h2><!--  v-pre可以阻止系统对<h2></h2>中的内容进行解析-->
+        <h2 v-cloak>{{message}}</h2><!--  v-cloak-->
+
+    </div>
+
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好',
+                url:'<a href="https://cn.vuejs.org/v2/guide/syntax.html#Attribute">Vue一下</a>'
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>
+

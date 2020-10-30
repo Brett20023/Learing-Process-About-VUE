@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+
+    -->
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+
+<body>
+
+    <div id="app">
+
+        <cpn :number1="num1" :number2="num2" @num1change="num1change" @num2change="num2change"/>
+
+
+
+    </div>
+
+
+    <!-- 2.子组件模板 -->
+    <template id="cpn">
+        <div>
+            <h2>props:{{number1}}</h2>
+            <h2>data:{{dnumber1}}</h2>
+
+            <input type="text" v-model="dnumber1" @input="dnumber1">
+            <h2>props:{{number2}}</h2>
+            <h2>data:{{dnumber2}}</h2>
+
+            <input type="text" :value="dnumber2" v-model="dnumber2">
+
+
+        </div>
+    </template>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                num1: 1,
+                num2: 2
+            },
+            methods:{
+num1change(value){
+    // 可以通过value与数值进行运算从而改变数据的类型将其从string转换为int
+    // 也可以使用parseInt()来对数据进行一个类型转换为int类型（也有parsflot可以使用）
+    this.num1=parseInt(value)
+},
+num2change(value){
+this.num2=parseFloat(value)
+}
+            },
+            
+
+
+            
+            components:{
+                cpn: {
+                    template: '#cpn',
+                    props: {
+                        number1: Number,
+                        number2: Number,
+
+
+                    },
+                    data() {
+                        return {
+                            dnumber1: this.number1,
+                            dnumber2: this.number2
+                        }
+                    },
+                    watch:{
+                        dnumber1(newValue){
+                            this.dnumber2=newValue*100;
+                            this.$emit('num1change',newValue);
+                        },
+                        dnumber2(newValue){
+                            this.dnumber1=newValue/100;
+                            this.$emit('num2change',newValue);
+                        }
+                    }
+
+                }
+            }
+
+        })
+
+
+    </script>
+</body>
+
+</html>
