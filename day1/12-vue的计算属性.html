@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+   
+    
+    -->
+<head>
+    <meta charset="UTF-8">
+   
+</head>
+
+
+<body>
+     <div id="app">
+        <h2>总价格：{{totalPrice}}</h2>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue">import Vue from 'Vue'</script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                books:[
+                 {id:110, name:'Unix编码艺术', price:119},
+                 {id:111, name:'代码大全', price:1561},
+                 {id:112, name:'深入理解计算机原理', price:572319},
+                 {id:113, name:'现代操作系统', price:15289},  
+                ]
+
+
+            },
+            computed:{
+                //高阶函数filter/map/reduce
+                totalPrice: function(){
+                   // return books.reduce()可以直接计算出价格的和
+                   let result = 0
+                   for (let i=0; i<this.books.length;i++){
+                        result +=this.books[i].price
+                   }
+                   return result
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

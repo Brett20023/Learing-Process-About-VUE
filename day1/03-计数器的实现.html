@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue">import Vue from 'Vue'</script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>当前计数：{{Number}}</h1>
+        <button v-on:click="Number++">+</button>
+        <button v-on:click="Number--">-</button>
+
+<br>
+        <button v-on:click="add">+</button>
+<button @click="sub">-</button>
+
+
+    </div>
+
+    <script>
+         
+         const obj = {
+             Number:0
+         }
+       
+        const app = new Vue({
+            el: '#app',
+            data: obj,
+              methods:{
+                  add:function(){
+                       console.log('add被执行')
+                       this.Number++
+                       //使用this来定义当前对象从而引用当前对象data中的数据元素
+                  },
+                  sub:function(){
+                        console.log('sub被执行')
+                        this.Number--
+                  }
+              }
+        })
+              //1.拿button元素
+              //2.添加监听事件
+
+    </script>
+</body>
+
+</html>
