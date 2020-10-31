@@ -1,0 +1,37 @@
+body{
+    background: url('../img/test.jpg');
+
+}
+图片也需要对应的loader叫url-loader
+在早期的DOS操作系统上文件的后缀名只能有三位，所以在早期会看到htm文件，其为html的等效替代
+
+option{
+    limit：“”
+}
+在loader的配置中图片的option  limit是用来限制图片的大小（容量大小好多kb或者GB）limit的默认单位
+为k所以使用时记得进行单位的换算
+
+在图片调用时，会将jpg图片转换为一个base64的字符串
+当加载的图片小于limit时，会将图片编译成base64的形式
+如果图片大小大于limit的限制时，需要开发者安装一个file-loader模块
+来帮助webpack对图片进行编译，file-loader不需要专门进行编译
+
+当图片大于limit的限制时，系统会将图片打包重命名后放置到dist文件夹中
+但此时dist文件夹中都图片并没有的到直接的调用，因此还需要开发人员到webpack.config.js
+中module.exports={
+    中添加一个叫publicPath的属性，当添加完这条属性后，以后涉及到url的东西都会在前面拼接
+    上publicPath中填写的地址
+
+    publicPath：‘dist/’
+}
+
+webpack自动帮我们打包图片时会帮我们生成一个很长的名字
+是一个32位的hash值，目的是防止重名。但是在真实的开发中，
+我们可能对打包的图片名字有一定的要求，比如将所有图片放在一个文件夹中，
+跟上图片原来的名称，同时也要防止重复可以使用"img/name.hash：8 ext"
+来选取路径,这样的方法筛选出的图片会保留原来的名字并在后面生成hash值：后的数字为截取
+的hash值的长度
+
+
+回到webpack.config.js文件中在图片的test属性中加上一个name：“img/[name].[hash:8].[ext]”（其中ext是extention的缩写代表的是原文件的拓展名）
+这样超过limit大小的图片就会按照规范命名了，也不用担心同名图片调用时产生冲突

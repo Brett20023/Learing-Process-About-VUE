@@ -1,0 +1,42 @@
+安装vue的三种方式
+1.直接下载应用
+2.CDN引入
+3.npm安装
+
+如果通过npm安装了vue过后我们就可以在js中使用vue的语法了
+
+安装时需要用npm install vue --save进行安装（注：这里没有使用--save-dev是因为vue不仅在开发时要使用，运行时也要使用vue环境）
+
+
+vue在构建的时候构建了两个版本
+1.runtime-only--->运行时，代码中不可以有任何的template
+2.runtime-compiler---->代码中可以有template，因为有compiler代码可以用于编译template代码
+
+
+                            alias：{
+                                "vue$":"vue/dist/vue.esm.js"
+                            }
+                            alias（别名）
+此时要在model的vue的test中加入alias属性修改vue调用的文件
+
+
+正式使用时不需要给new Vue赋值
+直接写new Vue{
+    .....
+}就可以了
+
+
+SPA（simple page web appliction）-->vue-router（前端路由）
+以后会用vue作比较多的是SPA单页面复应用一般只有一个html代码
+如果有多个页面一般通过路由跳转
+一般只有一个index.html并且一般在index文件中进行修改
+
+
+compiler（编译的意思）
+为了让浏览器能读取.vue文件需要用npm install vue-loader vue-template-compiler --save-dev
+同样的vue-loader也需要进行配置
+
+
+同样的vue-loader也有很多的版本从14版本开始如果要使用vue-loader的话还要配置相应的插件
+可以在package.json中将vue-loader的参数改为"^13.0.0"（^的意思是13及以上的版本但不会到14.几的板门）
+每次改变package.json文件都要重新执行npm install

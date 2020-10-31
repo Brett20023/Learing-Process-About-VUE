@@ -1,0 +1,28 @@
+loader
+
+如果要使用loader首先要通过npm来安装要使用loader
+
+main.js这样的主文件不要往文件夹里面放
+要让css与js产生依赖才能进行调用，在建立main.js文件之后使用reuqire（“文件路径”）来建立js对css的依赖
+可以前往webpack.js.org来查询webpack相关的命令和依赖的安装
+一般来说，非盈利组织的后缀会写作org
+在https://www.webpackjs.com/loaders/css-loader/中有详细的css-loader的详细使用方法
+css-loader只负责将文件进行加载，不负责让css文件生效
+style-loader可以将文件导出放置在样式中生效
+
+
+例：
+
+module：{
+    rules：{
+        test：/\.css$/，
+\是起始符$是结束符
+
+
+//使用多个loader时，是从右向左读的
+
+
+        use:['style-loader','css-loader']
+    }
+
+}

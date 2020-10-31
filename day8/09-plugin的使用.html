@@ -1,0 +1,19 @@
+plugin是插件的意思，通常用于对某个眼有的框架进行拓展
+在vue.esm.js中可以查看开源协议，国内不存在，随便写个协议就可以了
+
+开源的东西也不是可以随意使用，应该去查询相关的开源协议以免发生商务纠纷
+react-->
+
+
+plugins与module、output、resolve是并列同级的
+我们需要删除之前output中添加的publicPath属性
+否则插入的script标签中的src有可能会有问题
+
+
+js压缩的plugin：对代码进行丑化
+同样的我们先要安装对用的loarde配置，这里我们要安装的是npm install uglifyjs-webpack-plugin@1.1.1--save-dev
+代码丑化主要是完成两件事情
+1.取消空格
+2.将变量名用简单的符号进行代替
+在安装好uglify之后要在plugin标签中添加一个uglify的属性
+安装好之后再对文件进行打包webpack会自动对文件进行丑化
