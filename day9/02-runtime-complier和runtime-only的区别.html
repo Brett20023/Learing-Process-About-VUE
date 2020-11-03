@@ -1,0 +1,38 @@
+runtime-compiler：
+
+
+
+runtime-only：
+
+两者的区别只在main.js文件中
+
+
+
+将模板传给vue时会对模板进行一个保存，然后将template进行一个parse（解析），
+将template解析成ast（抽象语法树-----abstract syntax tree），然后会对tempalte
+进行一个compile（编译）将其编译成render（functions），之后将其翻译成一个virtual dom
+（虚拟函数），最后再将其渲染成真实的dom
+
+
+runtime-compiler
+template->ast->render->virtual dom->真实DOM
+
+
+runtime-only(1.性能更高 2.下面的代码量更换少)
+render->vdom->UI
+
+
+render函数的运行逻辑
+
+在main.js中可以传出一个render：function（）函数
+
+render：fuction（createElement）{
+    1.普通用法：createElement（'标签',{标签的属性},['']）
+    return createElement（'h2',{class:'box'},['Hello, World']）
+
+    2.传入组件对象
+    可以直接调用传入的app函数
+    当传入组件时组建的template标签会被vue-template-compiler编译为render函数
+
+
+}

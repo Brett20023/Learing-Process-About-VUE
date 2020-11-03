@@ -1,0 +1,20 @@
+首先创建另外一个叫base.config.js的配置文件
+然后建一个叫production.config.js的文件和一个叫dev.config.js的文件和一个叫dev
+base.config.js：储存一些公共的东西
+production.config.js:生产时使用的东西放在这个里面
+dev.config.js：开发时使用的一些东西放在这个里面
+
+
+为了将任意两个文件进行合并，要使用npm install webpack-merge --save -dev
+来合并配置文件
+
+要使用这种方法就需要去脚本中对build文件进行指定，‘webpack --config ./build/prod.config.js’(注：左边是将
+webpack文件指定为prod.config.js文件的示例)
+
+
+
+同时脚本中的dev调用也需要重新指定
+示例：'webpack-dev-server --open --config ./build/dev.config.js'
+\
+
+文件路径前加..表示当前文件的上一层路径

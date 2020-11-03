@@ -1,0 +1,80 @@
+一、箭头函数的基本使用
+
+
+<script>
+// 箭头函数：也是一种定义函数的方式
+//1. 定义函数的方式-----function
+const aa = function (){
+
+}
+// 2.对象字面量中定义函数
+cosnt obj = {
+    bbb:function(){
+
+    },
+    bbb(){
+
+    }
+}
+// 3.ES6中的箭头函数
+// const ccc = (参数列表)=>{}
+    // cosnt ccc = () =>{}
+    // 上面第二个是模仿aa函数的等效函数结构
+
+</script>
+
+
+
+
+
+
+
+二、箭头函数参数和返回值的问题
+1.参数问题
+1.1 放入两个参数
+const sum = (num1,num2)=>{
+    return num1 + num2 
+}
+1.2 放入一个参数
+const power = num => {   只有一个参数时小括号可以省掉
+    return num*num
+}
+
+2.返回值的问题
+
+2.1 函数代码块中有多行代码时
+cosnt test = () =>{
+1.打印hello world
+console.log('Hello, World');
+
+2.打印Hello vue.js
+console.log('Hello, Vue.js');
+
+}
+
+2.2 函数代码块中只有一行代码
+const mul = (num1,num2) => {num1 + num2}
+
+cosnt mul = (num1,num2) => num1 * num2 
+console.log(mul(20,30));
+
+cosnt demo = () => {
+    console.log('Hello Demo');
+}
+
+当函数代码中只有一行代码时，无论函数是否有返回值都会
+返回将箭头指向的函数的结果作为返回值返回出去
+cosnt demo = () => console.log('Hello Demo');
+
+
+
+
+
+
+
+
+
+
+三、箭头函数中的this的使用
+箭头函数中的this引用的是最近作用域的位置
+箭头函数中this会一步步向外查找，直到查到有this的定义

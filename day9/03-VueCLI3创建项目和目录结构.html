@@ -1,0 +1,39 @@
+Vue CLI3初识
+
+1.基于webpack4打造
+2.设计原则是0配置，移除配置文件根目录下的，build和config等目录
+3.提供了vue ui命令，提供了可视化配置，更加人性化
+4.移除了static文件夹，新增了public文件夹，并且index.html移动到public中
+
+
+使用Vue CLI3创建项目
+1.创建指令：'vue create +项目名称'-------（例子）'vue create project'
+
+2.创建的选择界面---
+                 1.选择default（默认）设置或者Manually（手动）设置
+
+                 2.选择Manually的情况：系统会给出很多选项让用户选择，如果要确认选项点击空格，点击回车进入下一步
+                  progressive Web App(PWA) 选项：有很高的缓存容量，并且传递一些推送通知
+
+                 3.选择将配置文件放在package.jsor中还是放在独立的配置文件中
+                 
+                 4.是否将此配置保存作为将来的项目的模板
+
+                 5.使用npm还是yarn
+
+
+
+vcs-->version control system(版本控制系统)
+脚手架3会默认创建一个git文件夹
+
+
+3.Vue CLI3运行
+
+npm run serve
+
+4.如何配置Vue CLI3
+启动配置服务器：vue ui
+在配置选项中程序猿可以对当前的vue项目进行配置的添加或删除
+
+如果想直接在文件中修改vue的配置，可以在跟目录下加一个叫做vue.config.js的文件来添加vue的配置
+在最后打包以后，这个文件夹中的文件会自动与系统默认的vue配置进行合并。
