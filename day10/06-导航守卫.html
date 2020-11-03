@@ -1,0 +1,105 @@
+导航守卫：监听跳转过程并对这个过程做一些操作
+
+使用生命周期函数
+
+created----当组件被创造出来就会回调这个生命周期函数
+created(){
+    name:'home',
+
+}
+
+mounted()------当模板上的东西被挂载到dome上时进行回调
+mounted(){
+
+}
+
+
+updated()-------界面发生一次刷新后就会来执行这个updated函数
+updated(){
+
+}
+
+
+通过生命周期函数就可以在页面发生跳转的时候改变某些东西，例如改变网页的title
+
+为了只改一次就让title自动复制到相应页面的标题，首先我们要进入到router文件夹中
+修改index.js，在里面创建一个router.beforeeEach函数，这个函数要我们传入一个叫
+NavigationGuard函数，这是一个箭头函数，这个函数有三个参数to，from，next
+
+
+在这个函数中必须要调用一个next，而next本身又是一个函数,next的功能是让网页可以执
+行下一步
+
+router.beforeeEach(to,from,next) => { 
+    //从from跳转到to
+    document.title = to.meta.title
+next()
+}
+
+
+
+
+to是route类型，所以为了给to加上title就要在路由对象的path中加上一个meta元素，然后在meta中加一个titl或者其他元素来为
+路由元素添加用来进行判定的属性
+
+例：{
+    path：'/home',
+
+    //meta：元数据（描述数据的数据）
+    meta:{
+        title:'XXX'
+    }
+}
+
+通过这种方法我们只需要在router的index.js中为每个页面加上一个title属性就可以实现让不同的页面显示出他们各自的title，而不是
+传统的在对应页面的js文件中对title进行修改
+
+但是这种方法打印出来的结果会因为路由的嵌套而产生影响，为了消除这种影响可以重matched中对title进行调用
+
+router.beforeeEach(to,from,next) => { 
+  
+    document.title = to.matched[0].meta.title
+next()
+}
+
+
+
+
+
+导航守卫的一些补充
+
+
+1. 前置守卫（guard）
+上面用到的这个函数称为前置守卫，在跳转前对函数进行回调
+router.beforeeEach(to,from,next) => { 
+
+    document.title = to.matched.meta.title
+next()
+}
+
+
+2. 后置钩子（hook）
+
+
+afterEach()后置钩子，不需要主动调用next()函数，当路由跳转过后也会进行回调（钩子也有回调的意思）
+
+
+afterEach(to, from) => {
+    console.log('0....')
+}
+
+
+
+
+以上提到的两种函数称为全局守卫除此之外还有路由独享守卫和组件内守卫
+
+可以在next()的括号中进行跳转页面指定
+
+路由独享守卫：在创建路由配置上直接定义beforeEnter守卫这些首位的配制方法和前置守卫的配置方法是一样的
+这个函数可以在路由被请求前进行执行
+beforeEnter：(to,from,next) => {
+
+}
+
+
+组件内守卫：详见官网

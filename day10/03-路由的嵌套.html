@@ -1,0 +1,42 @@
+路由的嵌套
+
+嵌套路由是一个很常见的功能，我们希望通过/home/new和/home/message访问一些内容
+一个路径映射一个组件，访问这两个路径也会分别渲染两个组件
+
+
+在router的index.js中加入一些东西
+
+
+const News = （）=> import('../components/News')
+const Message = （）=> import('../components/Message')
+
+
+
+const routes = {
+    path：'/home',
+    component:Home,
+    children:[
+    {
+
+        //子路由中路径不需要加/他会自动加载到父路由url的路径后面
+       path:'news'   
+       component：News
+    },
+    {
+        path:'message'   
+        component：Message
+    }
+    ]
+}
+
+
+同样的为了让子路由能够显示在页面中，我们需要在对应的路由的模板中
+加入router-view和router-link的标签，在加上这两个标签以后，通过
+to元素来连接到对应的子路由js文件。
+例子：<router-link to = "/home/news">新闻</router-link>
+注：此处to中的路径不能直接写news一定要加上父路由的路径，否则输出的url就会只有子路由的
+路径导致调用出错
+<router-view></router-view>
+
+与路由的默认路径配置的方法相同，我们同样可以为子路由配置默认路径
+利用path:''的component来进行配置

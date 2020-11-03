@@ -1,0 +1,147 @@
+一、认识vue-router
+
+目前的前端三大框架都有路由实现
+Angular的ngRouter
+React的ReactRouter
+Vue的vue-router
+
+再此重点学习vue-router
+vue-router用于设定访问路径，将路径和组件映射起来
+在vue-router的单页面应用中，页面的路径的改变就是
+组件的切换
+
+step 1 安装vue-router
+命令：npm install vue-router --save
+
+step 2 在模块化工程中使用
+1.导入路由对象，并且调用Vue.use(VueRouter)
+Vue.use(VueRouter)
+
+
+2.创建路由实例，并且传入路由映射配置
+
+
+const routes = [] 
+cosnt router = new VueRouter({
+    routes
+})
+
+
+3.在vue实例中挂载创建的路由实例
+
+exportdefault router
+
+在导入的时候如果是要导入文件夹中的index文件，可以在路径上只写
+文件夹的路径，不用细化到文件夹中的某个文件
+
+在项目的开发中一般会在src文件夹中创建一个叫rooter的
+文件，在其中会有一个叫index.js的文件在其中会配置路由相关的信息
+
+
+
+
+
+
+
+
+二、使用vue-router的步骤
+
+1.创建路由组件
+
+
+2.配置路由映射：组件和路径映射的关系
+
+3.使用路由：通过<router-link>和<router-view>
+在模板中插入<router-link>和<router-view>的标签并使用
+to属性来连接对应的样式从而形成映射
+
+例子：<router-link to='./about'>
+    to后面跟的应该是对应的hash值
+router-link用于切换hash值来跳转到不同的渲染元素中去
+而router-view更像是占位符，对应的元素会渲染到router-view
+所出现的位置
+
+最后router-link会被渲染成a标签
+
+
+
+
+
+
+
+
+
+
+三、路由默认路径的配置
+在router文件夹中的index.js的文件中
+const routes = [
+{
+    path:'';
+    //redirect重定向:当网页路由为空时自动定向到home
+    redirect:'/home',
+}]
+
+
+
+
+
+
+
+四、用history模式代替hash值
+在router文件夹中的index.js的文件中
+
+
+const router = new VueRouter({
+    routes,
+    mode:'history'
+})
+加入了model：'history'过后这个vue项目的url显示hash值的
+时候就不会再带#了，让url更像一个正常的网页url
+
+
+
+
+
+
+
+五、关于router-link的补充
+在前面的router-link中只使用to属性来连接不同的路由映射
+
+router-link标签可以加入一个tag属性来改变浏览器对router-link
+元素的渲染方式，以前浏览器只将router-link渲染成a标签，现在使
+用tag属性可以改变其渲染方式
+
+例：<router-link tag = 'button'></router-link>
+此时router-link将会作为button标签渲染出来
+
+当router-link处于活跃状态时，他会给自己增加一个叫active的属性
+通过插入active-class元素可以改变这个active属性的名字，从而让
+其能匹配某些css元素的联动效果
+
+如果想统一给所有的router-link标签改active状态的命名，可以到
+router/index.js中的const router = new VueRouter中添加一个
+linkActiveClass的属性来对所有的reouter-link标签进行重命名
+
+
+
+
+
+六、通过代码的方式修改路径
+
+<button @click="homeClick">
+
+    <script>
+export default{
+    methods:{
+        homeClick(){
+// 通过代码的方式修改路由：vue-router($router属性由router的源码中插入)
+// push => pushState 两个页面都有返回键可以点
+this.$router.push('/home')
+// 这样的话就不可以使用返回键了
+this.$router.replace('/home')
+
+        }
+    }
+}
+
+    </script>

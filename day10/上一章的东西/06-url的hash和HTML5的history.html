@@ -1,0 +1,44 @@
+1.URL的hash
+改变URL的hash是不会让页面发生刷新的
+在网页的控制台使用console界面，输入location.hash = ‘aaa’
+
+href-->hyper reference（超链接）
+
+改变hash浏览器回去寻找对应的路由的映射，然后去前端路由中
+寻找对应的要渲染的组件，然后吧对应的组件找出并渲染到当前页
+面中去
+
+
+2.在HTML5中可以使用history
+history.pushiState({},'','home')
+pushi在数据结构中的栈结构有广泛的应用
+栈结构的特点是取出数据只能从最后一个开
+始拿（先进后出）
+
+同样的使用history.back()函数就会返回
+到上一个推入栈中的值
+
+例子：history.pushiState({},'','home')
+      history.pushiState({},'','about')
+      history.pushiState({},'','last')
+      history.back()
+      此时浏览器会返回到
+      about页面
+      history.back()的效果等效与浏览器上的后退按键
+
+使用history.repaceState({},'','')同样可以达到不刷新就跳转网页的效果
+但是与history.pushiState({},'','')不同的是history.repaceState不会
+产生大量的历史记录，即无法师用后退键回退到上一页面
+
+
+history.go(-1)等效与history.back()但是可以通过控制()中的值来改变回跳几页
+
+
+例子：history.pushiState({},'','home')
+      history.pushiState({},'','about')
+      history.pushiState({},'','last')
+      history.go(-2)
+      此时浏览器会返回到
+      home页面
+
+history.forward()等价于history.go(1)即向前跳几页

@@ -1,0 +1,41 @@
+动态获取ID并让其显示url地址最后，并且通过ID来控制网页渲染的内容
+
+<router-lin ：to="'/home/'+userID"></router-lin>
+
+
+
+
+
+
+
+<script>
+
+
+export default {
+    data(){
+        return{
+            userID:'liusi'
+        }
+    },
+    computed:{
+        userId(){
+
+            //和$router不同$route表示的是当前活跃的路由哪个路由活跃就会传出哪个路由的数据
+            // 这里的userID和在routes中配置的东西有关这里配的是"/hmoe/:userID"如果改成"/hmoe/:abc"
+            // 那么这里的uderID就应该改成abc
+            return this.$route.params.userID
+        }
+    }
+}
+
+
+</script>
+同样要在router中的index.js进行配置将
+cosnt routes ={
+    path：'/home/:userID',
+    component:home
+}
+
+
+
+这样userID就会动态地绑定到url地后面了
