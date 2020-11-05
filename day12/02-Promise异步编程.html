@@ -1,0 +1,144 @@
+Promise是ES6中的语法
+是一种异步编程的解决方案
+一般在用到网络请求的时候会用的异步编程，因为网络请求会与服务器进行交互这个过程会消耗一定时间，但是用户的操作
+不会停下来，此时就会使用异步编程向服务器发送请求，同时js代码还会继续执行下去
+
+
+网络请求回调地狱
+url1请求data1，data1中包含请求的url2，然后用url2请求data2，data2中包含一个请求的url3.。。。
+以此类推可能会出现多次套娃的情况，导致最后的代码非常多而杂难以维护
+而Promise就可以解决这种问题
+
+
+
+
+Promise的基本使用
+
+<script>
+    //1. 使用setTimeout
+    setTimeout(() => {
+        console.log('Hellow, World');
+    }, 1000)
+
+    // 2.
+    // 在使用promise时是要求我们在括号中传入一个参数的
+    // 参数本身是一个函数,此时我们可以传入一个箭头函数
+    // 而箭头函数本身也需要我们传入两个参数resolve和reject，而这两个参数本身又是函数
+    // resolve解决：
+    // reject拒绝：
+
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log('Hellow, World');
+            console.log('Hellow, World');
+            console.log('Hellow, World');
+            console.log('Hellow, World');
+            console.log('Hellow, World');
+            console.log('Hellow, World');
+            setTimeout(() => {
+                console.log('Hellow');
+                console.log('Hellow');
+                console.log('Hellow');
+                console.log('Hellow');
+                console.log('Hellow');
+
+                setTimeout(() => {
+                    console.log('World');
+                    console.log('World');
+                    console.log('World');
+                    console.log('World');
+
+                }, 1000)
+            }, 1000)
+        }, 1000)
+    })
+
+    // 当以上的回调地狱出现的时候就可以向下面这样写
+
+
+    // 使用resolve函数来调用一个then函数将套娃的内容全都放在then函数中
+    // 这样的编程方式就是链式编程
+// 代码量虽然变多，但是代码的逻辑结构却变得更加清晰
+
+    new Promise((resolve, reject) => {
+
+
+        // 1.第一次网络请求的代码
+        setTimeout(() => {
+            resolve()
+        }, 1000)}).then(() => {
+
+            // 第一次拿到结果的处理代码
+            setTimeout(() => {
+                console.log('Hellow,World');
+                console.log('Hellow,World');
+                console.log('Hellow,World');
+                console.log('Hellow,World');
+
+                return new Promise((resolve, reject) => {
+
+                    // 第二次网络请求的代码
+                    setTimeout(() => {
+                        resolve()
+                    }, 1000)
+                })}).then(() => {
+                    // 第二次处理的代码
+                    console.log('Hellow');
+                    console.log('Hellow');
+                    console.log('Hellow');
+                    console.log('Hellow');
+                    console.log('Hellow');
+                    return new Promise((resolve, reject) => {
+                        // 第三次网络请求的代码
+                        setTimeout(() => {
+                            resolve()
+                        }, 1000)
+                    })
+                }).then(() => {
+                    // 第三次处理的代码
+                    console.log('Hellow');
+                    console.log('Hellow');
+                    console.log('Hellow');
+                    console.log('Hellow');
+
+                    
+                })
+
+
+
+
+
+
+</script>
+一般情况下，当有异步操作要执行的时候会使用到Promise对这个异步函数进行封装
+new-> 构造函数（1.保存了一些状态信息 2.指向传入的函数)
+在执行传入的回调函数时，会传入两个参数，resolve，reject，本身又是函数
+
+将请求代码和处理代码进行分离
+
+成功时调用resolve请求失败时调用reject
+而当调用reject时Promise函数就不会调用.then后面的内容，而是调用.catch后面的
+内容并且将reject括号中的内容可以传递到.catch中
+
+
+1.步骤
+synchronization(同步操作)
+
+Async operation（异步操作）
+
+可以在then中把catch加到里面,err中的内容会在reject时显示，而
+data中的内容会在resolve时显示
+
+new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+        resolve('111'),
+        reject('222'),
+    })
+}).then(
+    data=>{
+
+    },
+    err =>{
+
+    }
+)

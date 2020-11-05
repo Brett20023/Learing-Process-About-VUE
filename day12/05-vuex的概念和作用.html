@@ -1,0 +1,25 @@
+vuex的作用是为vue.js程序开发的状态管理模式
+
+当多个组件都有同一个状态需要共享时就可以使用vuex
+用其创建一个单独的负责管理的对象
+vuex有token（令牌）属性让只有相应权限的用户才能得到
+相应组建的信息，在真实开发中可能会将用户名、头像、登录状态
+登信息进行保存传到多个页面，这时就要使用到我们的vuex了
+
+state：一般用变量来储存状态，变量一般用data来储存
+
+view：data想要显示就是在模板上进行显示
+
+actions：而view中则会产生一些行为，比如用户发生点击
+
+为了使用vuex首先第一步是安装vuex的插件
+使用命令：npm install vuex --save
+
+为了调用vuex插件在src中创建一格叫store（仓库）的文件夹来储存vuex的配置文件
+
+
+通过这一一些操作之后就可以使用$store.state.counter来调用vuex中保存的全局变量了
+但是官方不建议我们直接使用$store.state.counter来对vuex中的数值进行修改，他希望
+我们通过action->mutations->state来对vuex中的数据进行修改
+
+官方提供了一个叫devtools的插件，他可以记录每次是那个页面对数据进行了怎样的修改

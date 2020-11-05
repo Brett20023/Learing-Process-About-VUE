@@ -1,0 +1,91 @@
+假设现在程序有一个需求，他需要将两个请求都调用到
+才能生效
+
+
+
+let isResult1 = false
+let isResult2 = false
+
+网络请求1
+$ajax({
+url:'',
+success:function(){
+console.log(结果1);
+isResult1 = true
+handleResult()
+}
+})
+
+
+
+网络请求2
+$ajax({
+url:'',
+success:function(){
+console.log(结果2);
+isResult2 = true
+handleResult()
+}
+})
+
+
+先创建一个函数来处理结果
+function handleResult(){
+if(isResult1&&isResult2){
+
+}
+}
+
+
+现在不需要这样复杂的代码可以使用一个Promise.all()函数来实现回调
+Promise.all的定义的一个可迭代函数叫interator（可迭代的/可遍历的）
+这个interator的对象必须是一个数组
+
+Promise.all([
+<!-- new Promise((resolve,reject)=>
+{
+$ajax({
+url:'url1',
+success:function(){
+console.log(结果1);
+isResult1 = true
+handleResult()
+}
+})
+}),
+new Promise((resolve,reject)=>
+{
+$ajax({
+url:'url2',
+success:function(){
+console.log(结果2);
+isResult2 = true
+handleResult()
+}
+})
+}), -->
+setTimeout()
+new Promise((resolve,reject)=>
+{
+    setTimeout(()=>{
+resolve('result1')
+    },10000)
+
+}),
+new Promise((resolve,reject)=>
+{
+    setTimeout(()=>{
+        resolve('result2')
+
+    },2000)
+
+}),
+
+
+
+<!-- 当前面两个函数返回的结果都为true时，就会执行then中的函数
+results是一个数组，其中包含了1、2中返回的结果
+-->
+]).then(results=>{
+console.log(results)；
+})

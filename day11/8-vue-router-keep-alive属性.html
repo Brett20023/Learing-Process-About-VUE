@@ -1,0 +1,26 @@
+keep-alive标签有两个属性
+
+include：字符串正则表达式，只有匹配的组件会被缓存
+
+exclude：祖父穿正则表达式，任何匹配的组件都不会被缓存
+
+如果想不让keep-alive标签间的某个元素被保存活跃状态，可以使用exclude属性
+在exclude中加上组件的name就可以将该组件排除在keep-alive的活跃状态中了
+
+例：
+<keep-alive exclud = "Profile">
+
+</keep-alive>
+<script>
+    export default{
+        name:'Profile'
+    }
+</script>
+
+
+
+如果要同时排除两个组件那么可以这样写（注：逗号后面不要加空格）
+<keep-alive exclud = "组件1名字,组件2名字">
+    和正则表达式相关的不要随便加空格，空格在正则表达式中有特殊含义
+
+
