@@ -1,0 +1,70 @@
+使用第三方框架都要进行封装，不要直接使用第三方框架
+JSONP（下去补一下）
+
+vue发送请求的方式有很多种
+
+1.传统的Ajax基于XMLHTTPRequest（XHR）
+一般不选用这种方式
+因为其配置和调用方式非常混乱，编码看起来
+十分头痛，一般用JQery-Ajax来代替
+
+2.JQuery-Ajax
+现在用JQ用的比较少了，因为其框架调用十分
+繁琐
+
+3.Vue-resource
+官方推出的简化版封装程序，用于代替JQ封装数据
+但是官方在vue2.0过后就停止了该软件的维护，所
+以在项目中不在使用这种封装方式
+
+
+4.axios
+vue作者推荐使用axios
+优点：在浏览器中发送XMLHttpRequests请求
+     在node.js中发送http请求
+     支持PromiseAPI
+     拦截请求和响应
+     转换请求和响应
+     等等
+
+
+     请求方式
+axiox(config)
+axios.request(config)
+axios.get(url[,config])
+axios.delete(url[,config])
+axios.hander(url[,config])
+axios.post(url[,config])
+axios.put(url[,config])
+axios.patch(url[,config])
+
+
+要在项目中使用axios框架要现在命令中进行安装
+安装的命令是：    npm  install axios --save
+
+
+可以使用httpbin.org这个网站可以对很多的网络请求进行测试
+
+这个实例中没有特意指定发送的请求，默认情况下发送的的就是
+get请求，如果要改变请求可以加入method属性，通过调整method
+属性的值来选择axios发送的请求
+
+axios({
+
+     //这里的url是想要请求数据服务器的地址
+     url:'httpbin.org/'
+   }).then(res =>{
+     console.log(res);
+   })
+
+
+如果想用axios.all同时发送多个请求，可以使用axios.all([])
+返回的结果是一个数组，使用axios.spread可将数组[res1,res2]
+展开为res1，res2
+axios({
+     url:'httpbin.org/'
+   }).then(axios.spread((res1,res2 )=>{
+     console.log(res2);
+     console.log(res1);
+
+   }))
